@@ -10,11 +10,7 @@
             
                            
         <div>
-            <div id="panel" style="height: 500px; background-color: White; padding: 10px; overflow: auto">
-
-               
-
-            <ContentTemplate>
+          
 
                 <asp:GridView ID="gridManage" runat="server" CssClass="EU_DataTable"
 
@@ -293,9 +289,7 @@
                     </Columns>
 
                 </asp:GridView>
-                </ContentTemplate>
-                  
-                </div>
+               
             
 
         </div>

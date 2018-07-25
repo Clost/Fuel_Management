@@ -38,8 +38,8 @@ namespace Fuel_Management
         {
             con = new DatabaseConnection();
             con.OpenConnection();
-            con.ExecuteQueries("insert into Site values('" + IdSite.Text + "', '" + cluster.Text + "', '" + ADrefueled.Text + "', '" + Levelbefore.Text + "', '" + Levelafter.Text + "', '" + Qty.Text + "', '" + username.Text + ",'" + FinRWeek.Text + "','" + receiptNumber.Text + "'')");
-            //v
+            con.ExecuteQueries("insert into Fuel_register(SiteID,Cluster,DateFueling,levelBefore,levelAfter,Qty,username,FinRWeek,ReceiptNumber) values('" + IdSite.Text + "', '" + cluster.Text + "', '" + ADrefueled.Text + "', '" + Levelbefore.Text + "', '" + Levelafter.Text + "', '" + Qty.Text + "', '" + username.Text + "','" + FinRWeek.Text + "','" + receiptNumber.Text + "')");
+            
             
 
 
