@@ -29,7 +29,12 @@ namespace Fuel_Management
 
             IdSite.Items.Insert(0, new ListItem("Select Site ID", "0"));
 
-
+            if (Session["user"] != null)
+            {
+                username.Text = Session["user"].ToString();
+                username.Enabled = false;
+                ADrefueled.ReadOnly = true;
+            }
 
 
         }
@@ -53,6 +58,17 @@ namespace Fuel_Management
             }
             con.CloseConnection();
 
+        }
+
+        protected void imageButton_click(object sender, ImageClickEventArgs e)
+        {
+            calendar.Visible = true;
+        }
+
+        protected void calendar_selectionchanged(object sender, EventArgs e)
+        {
+            ADrefueled.Text = calendar.SelectedDate.ToShortDateString();
+            calendar.Visible = false;
         }
 
         

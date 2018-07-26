@@ -37,7 +37,7 @@ namespace Fuel_Management
             Response.ClearHeaders();
             Response.AddHeader("Cache-Control", "no-cache, no-store, max-age=0, must-revalidate");
             Response.AddHeader("Pregma", "no-cache");
-            Response.AppendHeader("Refresh", Convert.ToString((Session.Timeout * 2)) + ";URL=~/LoginPage.aspx");
+            Response.AppendHeader("Refresh", Convert.ToString((Session.Timeout * 2)) + ";URL=LoginPage.aspx");
 
         }
 

@@ -13,6 +13,15 @@ namespace Fuel_Management {
     public partial class FuelRegisterPage {
         
         /// <summary>
+        /// ResultInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ResultInfo;
+        
+        /// <summary>
         /// SiteD control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,24 @@ namespace Fuel_Management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ADrefueled;
+        
+        /// <summary>
+        /// imageButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imageButton;
+        
+        /// <summary>
+        /// calendar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calendar;
         
         /// <summary>
         /// LevelbeforeID control.
@@ -182,14 +209,5 @@ namespace Fuel_Management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Save;
-        
-        /// <summary>
-        /// ResultInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ResultInfo;
     }
 }

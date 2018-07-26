@@ -13,12 +13,21 @@ namespace Fuel_Management {
     public partial class ReportWeek1 {
         
         /// <summary>
-        /// gvFuelManagement control.
+        /// panel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvFuelManagement;
+        protected global::System.Web.UI.WebControls.Panel panel;
+        
+        /// <summary>
+        /// gridManage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridManage;
     }
 }

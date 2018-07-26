@@ -10,285 +10,322 @@
             
                            
         <div>
-          
+            <asp:Panel ID="panel" runat="server" Height="300px" Width="100%" ScrollBars="Auto">
 
-                <asp:GridView ID="gridManage" runat="server" CssClass="EU_DataTable"
+            <asp:GridView ID="gridManage" runat="server" CssClass="EU_DataTable"
+                AutoGenerateColumns="False" ShowFooter="True" CellPadding="2" BackColor="White" 
+                BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Height="77px" style="margin-right: 0px; 
+                 margin-bottom: 0px">
 
-                     AutoGenerateColumns="false" ShowFooter="true" >
+                <Columns>
 
-                    <Columns>
+                    <asp:TemplateField ItemStyle-Width="30px" HeaderText="ID">
 
-                        <asp:TemplateField ItemStyle-Width="30px" HeaderText="Fuel ID">
 
-                            <ItemTemplate>
+                        <ItemTemplate>
 
-                                <asp:Label ID="FuelID" runat="server"
+                            <asp:Label ID="FuelID" runat="server"
+                                Text='<%#Eval("FuelID")%>'></asp:Label>
 
-                                  Text='<%#Eval("FuelID")%>'></asp:Label>
+                        </ItemTemplate>
 
-                            </ItemTemplate>
+                   
 
-                        </asp:TemplateField>
+                    </asp:TemplateField>
 
-                        <asp:TemplateField ItemStyle-Width="600px" HeaderText="Site">
+                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Site">
+                        <HeaderStyle Width="40px" />
 
-                            <ItemTemplate>
+                        <ItemTemplate>
 
-                                <asp:Label ID="lblSite" runat="server" Text='<%#
+                            <asp:Label ID="lblSite" runat="server" Style="width:40px" Text='<%#
 
                                          Eval("SiteID")%>'></asp:Label>
 
-                            </ItemTemplate>
+                        </ItemTemplate>
 
-                            <EditItemTemplate>
+                        <EditItemTemplate>
 
-                                <asp:TextBox ID="txtSite" runat="server" Text='<%#
+                            <asp:TextBox ID="txtSite" runat="server" Style="width:40px" Text='<%#
 
                                          Eval("SiteID")%>'></asp:TextBox>
 
-                            </EditItemTemplate>
+                        </EditItemTemplate>
 
-                            <FooterTemplate>
+                        <FooterTemplate>
 
-                                <asp:TextBox ID="txtSite1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtSite1" runat="server"></asp:TextBox>
 
-                            </FooterTemplate>
+                        </FooterTemplate>
 
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-Width="600px" HeaderText="Cluster">
+<ItemStyle Width="40px"></ItemStyle>
 
-                            <ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Cluster">
 
-                                <asp:Label ID="lblCluster" runat="server" Text='<%#
+                        <ItemTemplate>
+
+                            <asp:Label ID="lblCluster" runat="server" Text='<%#
 
                                          Eval("Cluster")%>'></asp:Label>
 
-                            </ItemTemplate>
+                        </ItemTemplate>
 
-                            <EditItemTemplate>
+                        <EditItemTemplate>
 
-                                <asp:TextBox ID="txtCluster" runat="server" Text='<%#
+                            <asp:TextBox ID="txtCluster" runat="server" Text='<%#
 
                                          Eval("Cluster")%>'></asp:TextBox>
 
-                            </EditItemTemplate>
+                        </EditItemTemplate>
 
-                            <FooterTemplate>
+                        <FooterTemplate>
 
-                                <asp:TextBox ID="txtCluster1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtCluster1" runat="server"></asp:TextBox>
 
-                            </FooterTemplate>
+                        </FooterTemplate>
 
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-Width="600px" HeaderText="Date Fueling">
+<ItemStyle Width="40px"></ItemStyle>
 
-                            <ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Date Fueling">
 
-                                <asp:Label ID="DateFueling" runat="server" Text='<%#
+                        <ItemTemplate>
+
+                            <asp:Label ID="DateFueling" runat="server" Text='<%#
 
                                          Eval("DateFueling")%>'></asp:Label>
 
-                            </ItemTemplate>
+                        </ItemTemplate>
 
-                            <EditItemTemplate>
+                        <EditItemTemplate>
 
-                                <asp:TextBox ID="txtDateFueling" runat="server" Text='<%#
+                            <asp:TextBox ID="txtDateFueling" runat="server" Text='<%#
 
                                          Eval("DateFueling")%>'></asp:TextBox>
 
-                            </EditItemTemplate>
+                        </EditItemTemplate>
 
-                            <FooterTemplate>
+                        <FooterTemplate>
 
-                                <asp:TextBox ID="txtDateFueling1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtDateFueling1" runat="server"></asp:TextBox>
 
-                            </FooterTemplate>
+                        </FooterTemplate>
 
-                        </asp:TemplateField>
-                         <asp:TemplateField ItemStyle-Width="600px" HeaderText="Level Before">
+<ItemStyle Width="40px"></ItemStyle>
 
-                            <ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="40px" HeaderText="Level Before">
 
-                                <asp:Label ID="levelBefore" runat="server" Text='<%#
+                        <ItemTemplate>
+
+                            <asp:Label ID="levelBefore" runat="server" Text='<%#
 
                                          Eval("levelBefore")%>'></asp:Label>
 
-                            </ItemTemplate>
+                        </ItemTemplate>
 
-                            <EditItemTemplate>
+                        <EditItemTemplate>
 
-                                <asp:TextBox ID="txtlevelBefore" runat="server" Text='<%#
+                            <asp:TextBox ID="txtlevelBefore" runat="server" Text='<%#
 
                                          Eval("levelBefore")%>'></asp:TextBox>
 
-                            </EditItemTemplate>
+                        </EditItemTemplate>
 
-                            <FooterTemplate>
+                        <FooterTemplate>
 
-                                <asp:TextBox ID="txtlevelBefore1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtlevelBefore1" runat="server"></asp:TextBox>
 
-                            </FooterTemplate>
+                        </FooterTemplate>
 
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-Width="600px" HeaderText="Level After">
+<ItemStyle Width="40px"></ItemStyle>
 
-                            <ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Level After">
 
-                                <asp:Label ID="levelAfter" runat="server" Text='<%#
+                        <ItemTemplate>
+
+                            <asp:Label ID="levelAfter" runat="server" Text='<%#
 
                                          Eval("levelAfter")%>'></asp:Label>
 
-                            </ItemTemplate>
+                        </ItemTemplate>
 
-                            <EditItemTemplate>
+                        <EditItemTemplate>
 
-                                <asp:TextBox ID="txtlevelAfter" runat="server" Text='<%#
+                            <asp:TextBox ID="txtlevelAfter" runat="server" Text='<%#
 
                                          Eval("levelAfter")%>'></asp:TextBox>
 
-                            </EditItemTemplate>
+                        </EditItemTemplate>
 
-                            <FooterTemplate>
+                        <FooterTemplate>
 
-                                <asp:TextBox ID="txtlevelAfter1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtlevelAfter1" runat="server"></asp:TextBox>
 
-                            </FooterTemplate>
+                        </FooterTemplate>
 
-                        </asp:TemplateField>
-                          <asp:TemplateField ItemStyle-Width="600px" HeaderText="Qty to be">
+<ItemStyle Width="40px" Wrap="true"></ItemStyle>
 
-                            <ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Qty to be">
 
-                                <asp:Label ID="Qty" runat="server" Text='<%#
+                        <ItemTemplate>
+
+                            <asp:Label ID="Qty" runat="server" Text='<%#
 
                                          Eval("Qty")%>'></asp:Label>
 
-                            </ItemTemplate>
+                        </ItemTemplate>
 
-                            <EditItemTemplate>
+                        <EditItemTemplate>
 
-                                <asp:TextBox ID="txtQty" runat="server" Text='<%#
+                            <asp:TextBox ID="txtQty" runat="server" Text='<%#
 
                                          Eval("Qty")%>'></asp:TextBox>
 
-                            </EditItemTemplate>
+                        </EditItemTemplate>
 
-                            <FooterTemplate>
+                        <FooterTemplate>
 
-                                <asp:TextBox ID="txtQty1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtQty1" runat="server"></asp:TextBox>
 
-                            </FooterTemplate>
+                        </FooterTemplate>
 
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-Width="600px" HeaderText="Username">
+<ItemStyle Width="40px" Wrap="true"></ItemStyle>
 
-                            <ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Username">
 
-                                <asp:Label ID="username" runat="server" Text='<%#
+                        <ItemTemplate>
+
+                            <asp:Label ID="username" runat="server" Text='<%#
 
                                          Eval("username")%>'></asp:Label>
 
-                            </ItemTemplate>
+                        </ItemTemplate>
 
-                            <EditItemTemplate>
+                        <EditItemTemplate>
 
-                                <asp:TextBox ID="txtusername" runat="server" Text='<%#
+                            <asp:TextBox ID="txtusername" runat="server" Text='<%#
 
                                          Eval("username")%>'></asp:TextBox>
 
-                            </EditItemTemplate>
+                        </EditItemTemplate>
 
-                            <FooterTemplate>
+                        <FooterTemplate>
 
-                                <asp:TextBox ID="txtusername1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtusername1" runat="server"></asp:TextBox>
 
-                            </FooterTemplate>
+                        </FooterTemplate>
 
-                        </asp:TemplateField>
-                         <asp:TemplateField ItemStyle-Width="600px" HeaderText="Fin R Week">
+<ItemStyle Width="40px" Wrap="true"></ItemStyle>
 
-                            <ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true"  HeaderText="Fin R Week">
 
-                                <asp:Label ID="FinRWeek" runat="server" Text='<%#
+                        <ItemTemplate>
+
+                            <asp:Label ID="FinRWeek" runat="server" Text='<%#
 
                                          Eval("FinRWeek")%>'></asp:Label>
 
-                            </ItemTemplate>
+                        </ItemTemplate>
 
-                            <EditItemTemplate>
+                        <EditItemTemplate>
 
-                                <asp:TextBox ID="txtFinRWeek" runat="server" Text='<%#
+                            <asp:TextBox ID="txtFinRWeek" runat="server" Text='<%#
 
                                          Eval("FinRWeek")%>'></asp:TextBox>
 
-                            </EditItemTemplate>
+                        </EditItemTemplate>
 
-                            <FooterTemplate>
+                        <FooterTemplate>
 
-                                <asp:TextBox ID="txtFinRWeek1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtFinRWeek1" runat="server"></asp:TextBox>
 
-                            </FooterTemplate>
+                        </FooterTemplate>
 
-                        </asp:TemplateField>
-                        <asp:TemplateField ItemStyle-Width="600px" HeaderText="Receipt Number">
+<ItemStyle Width="40px" Wrap="true"></ItemStyle>
 
-                            <ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Receipt Number">
 
-                                <asp:Label ID="ReceiptNumber" runat="server" Text='<%#
+                        <ItemTemplate>
+
+                            <asp:Label ID="ReceiptNumber" runat="server" Text='<%#
 
                                          Eval("ReceiptNumber")%>'></asp:Label>
 
-                            </ItemTemplate>
+                        </ItemTemplate>
 
-                            <EditItemTemplate>
+                        <EditItemTemplate>
 
-                                <asp:TextBox ID="txtReceiptNumber" runat="server" Text='<%#
+                            <asp:TextBox ID="txtReceiptNumber" runat="server" Text='<%#
 
                                          Eval("ReceiptNumber")%>'></asp:TextBox>
 
-                            </EditItemTemplate>
+                        </EditItemTemplate>
 
-                            <FooterTemplate>
+                        <FooterTemplate>
 
-                                <asp:TextBox ID="txtReceiptNumber1" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtReceiptNumber1" runat="server"></asp:TextBox>
 
-                            </FooterTemplate>
+                        </FooterTemplate>
 
-                        </asp:TemplateField>
+<ItemStyle Width="40px" Wrap="true"></ItemStyle>
+
+                    </asp:TemplateField>
 
 
-                       
 
-                        <asp:TemplateField>
 
-                            <ItemTemplate>
+                    <asp:TemplateField>
 
-                                <asp:LinkButton ID="lnkRemove" runat="server" CommandArgument='<%#
+                        <ItemTemplate>
+
+                            <asp:LinkButton ID="lnkRemove" runat="server" CommandArgument='<%#
 
                                          Eval("FuelID")%>'
+                                OnClientClick="return confirm('Do you want to delete?')"
+                                Text="Delete"></asp:LinkButton>
 
-                                    OnClientClick="return confirm('Do you want to delete?')"
+                        </ItemTemplate>
 
-                                  Text="Delete"></asp:LinkButton>
+                        <FooterTemplate>
 
-                            </ItemTemplate>
+                            <asp:LinkButton ID="lnkAdd" runat="server"
+                                onclick="Btn_Add"
+                                Text="Add"></asp:LinkButton>
 
-                            <FooterTemplate>
+                        </FooterTemplate>
 
-                                <asp:LinkButton ID="lnkAdd" runat="server" 
-                                    OnClientClick="~/FuelRegister.aspx"
+                    </asp:TemplateField>
 
-                                  Text="Add"></asp:LinkButton>
+                    <asp:CommandField ShowEditButton="True" />
 
-                            </FooterTemplate>
+                </Columns>
 
-                        </asp:TemplateField>
+                <FooterStyle BackColor="White" ForeColor="#000066"></FooterStyle>
 
-                        <asp:CommandField ShowEditButton="True" />
+                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White"></HeaderStyle>
 
-                    </Columns>
+                <PagerStyle HorizontalAlign="Left" BackColor="White" ForeColor="#000066"></PagerStyle>
 
-                </asp:GridView>
+                <RowStyle ForeColor="#000066" />
+
+                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+
+                <SortedAscendingCellStyle BackColor="#F1F1F1"></SortedAscendingCellStyle>
+
+                <SortedAscendingHeaderStyle BackColor="#007DBB"></SortedAscendingHeaderStyle>
+
+                <SortedDescendingCellStyle BackColor="#CAC9C9"></SortedDescendingCellStyle>
+
+                <SortedDescendingHeaderStyle BackColor="#00547E"></SortedDescendingHeaderStyle>
+            </asp:GridView>
+                     </asp:Panel>
                
             
 

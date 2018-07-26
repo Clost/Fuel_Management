@@ -21,17 +21,25 @@ namespace Fuel_Management
                 con.OpenConnection();
 
                 con.ShowDataInGridView("select * from Fuel_register");
-                //gridManage.DataSource = con.dt;
+                gridManage.DataSource = con.dt;
+                gridManage.DataBind();
 
                 Console.WriteLine(con.dt);
             }
+
+
+        }
+
+        protected void Btn_Add(Object sender, EventArgs e)
+        {
+            Response.Redirect("~/FuelRegister.aspx");
         }
 
 
-        
 
-        
-        
+
+
+
     }
 
 }
