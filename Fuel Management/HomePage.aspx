@@ -3,9 +3,25 @@
 
     <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Fuel Management</h1>
+                    <h1 class="page-header">Overview</h1>
                 </div>
-                <!-- /.col-lg-12 -->
+                <div id="search_bar">
+
+                    Search by:
+                    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" Width="120px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                    </asp:DropDownList>
+&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="true"  Width="120px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+                    </asp:DropDownList>
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Refresh" Width="95px" />
+
+                    
+
+                    <asp:Button ID="Button2" runat="server" Text="Export To Excel" />
+
+                    
+
+                </div>
            
             
                            
