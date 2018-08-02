@@ -33,31 +33,64 @@ namespace Fuel_Management
             {
                 username.Text = Session["user"].ToString();
                 username.Enabled = false;
-                ADrefueled.ReadOnly = true;
+                
             }
 
+            ADrefueled.ReadOnly = true;
+            ADrefueled.Text = System.DateTime.Now.ToString("yyyy-MM-dd");
 
         }
 
         protected void Save_btnClick(Object sender, EventArgs e)
         {
+
+            
             con = new DatabaseConnection();
+
             con.OpenConnection();
-            con.ExecuteQueries("insert into Fuel_register(SiteID,Cluster,DateFueling,levelBefore,levelAfter,Qty,username,FinRWeek,ReceiptNumber) values('" + IdSite.Text + "', '" + cluster.Text + "', '" + ADrefueled.Text + "', '" + Levelbefore.Text + "', '" + Levelafter.Text + "', '" + Qty.Text + "', '" + username.Text + "','" + FinRWeek.Text + "','" + receiptNumber.Text + "')");
-            
-            
+            float num = float.Parse(Levelbefore.Text);
+            float num2 = float.Parse(Levelafter.Text);
 
-
-            if (con.x > 0)
+            if (num2<=num)
             {
-                ResultInfo.Text = "New Fuel have inserted successfully";
+                Response.Write("<script>alert('Level After must be greater than Level Before')</script>");
             }
             else
             {
-                ResultInfo.Text = "New Fuel not Inserted";
+                con.ExecuteQueries("select count(FuelID) from Fuel_register where SiteID=" + IdSite.Text + " And DateFueling=" + ADrefueled.Text);
+                if(con.cmd.Execute)
+                {
+
+                }
+                else
+                {
+                    SaveFuel();
+                }
+               
+            }
+                
+            
+            
+           
+
+        }
+
+        
+        protected void SaveFuel()
+        {
+            con.ExecuteQueries("insert into Fuel_register(SiteID,DateFueling,levelBefore,levelAfter,Qty,username,FinRWeek,ReceiptNumber) values('" + IdSite.Text + "', '" + ADrefueled.Text + "', '" + Levelbefore.Text + "', '" + Levelafter.Text + "', '" + Qty.Text + "', '" + username.Text + "','" + FinRWeek.Text + "','" + receiptNumber.Text + "')");
+
+            if (con.x > 0)
+            {
+                Response.Write("<script>alert('Refueling has been done')</script>");
+                
+            }
+            else
+            {
+                Response.Write("<script>alert('no refueling')</script>");
+               
             }
             con.CloseConnection();
-
         }
 
         protected void imageButton_click(object sender, ImageClickEventArgs e)
@@ -71,6 +104,7 @@ namespace Fuel_Management
             calendar.Visible = false;
         }
 
+       
         
     }
 

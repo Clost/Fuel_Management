@@ -2,345 +2,229 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="row">
+        <br /><br /><br /><br />
                 <div class="col-lg-12">
                     <h1 class="page-header">Overview</h1>
                 </div>
-                <div id="search_bar">
-
-                    Search by:
-                    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" Width="120px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+             
+                <div class="search_bar">
+        
+                  
+                     &nbsp;&nbsp;&nbsp;&nbsp;Search by:
+                    <asp:DropDownList ID="DropDownList1" runat="server" AppendDataBoundItems="false" AutoPostBack="true" Width="120px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" CssClass="search_categories">
                     </asp:DropDownList>
-&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="true"  Width="120px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:DropDownList ID="DropDownList2" runat="server" AppendDataBoundItems="false"  AutoPostBack="true"  Width="120px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" CssClass="search_categories">
                     </asp:DropDownList>
-                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Refresh" Width="95px" />
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Refresh" Width="95px" Class="button" />
 
                     
 
-                    <asp:Button ID="Button2" runat="server" Text="Export To Excel" />
-
+                    <asp:Button ID="Button2" runat="server" Text="Export To Excel" onClick="Export_Click" Class="button"/>
                     
-
-                </div>
-           
+                    <asp:LinkButton ID="lnkAdd" runat="server"
+                                    OnClick="Btn_Add"
+                                    Text="Add New" Class="button" Style="margin-left:360px;"></asp:LinkButton>
+                  
+           </div>
             
                            
         <div>
-            <asp:Panel ID="panel" runat="server" Height="300px" Width="100%" ScrollBars="Auto">
+            <br />
+           
+            <asp:Panel ID="panel" runat="server" Height="50%" Width="96%">
+               
 
-            <asp:GridView ID="gridManage" runat="server" CssClass="EU_DataTable"
-                AutoGenerateColumns="False" ShowFooter="True" CellPadding="2" BackColor="White" 
-                BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" Height="77px" style="margin-right: 0px; 
-                 margin-bottom: 0px">
+                <asp:GridView ID="gridManage" runat="server" CssClass="EU_DataTable"
+                    AutoGenerateColumns="False" ShowFooter="True" AllowPaging="true" OnPageIndexChanging="OnPageIndexChanging" CellPadding="4" BackColor="White" Width="96%"
+                    BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" Style="margin-bottom: 0px; margin-left:15px; overflow:visible" OnRowDeleting="gridManage_RowDeleting" OnRowEditing="gridManage_RowEditing">
 
-                <Columns>
+                    <Columns>
 
-                    <asp:TemplateField ItemStyle-Width="30px" HeaderText="ID">
+                        <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Site">
+                            <HeaderStyle Width="100px" />
 
+                            <ItemTemplate>
 
-                        <ItemTemplate>
-
-                            <asp:Label ID="FuelID" runat="server"
-                                Text='<%#Eval("FuelID")%>'></asp:Label>
-
-                        </ItemTemplate>
-
-                   
-
-                    </asp:TemplateField>
-
-                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Site">
-                        <HeaderStyle Width="40px" />
-
-                        <ItemTemplate>
-
-                            <asp:Label ID="lblSite" runat="server" Style="width:40px" Text='<%#
+                                <asp:Label ID="lblSite" runat="server" Style="width: 100px" Text='<%#
 
                                          Eval("SiteID")%>'></asp:Label>
 
-                        </ItemTemplate>
+                            </ItemTemplate>
 
-                        <EditItemTemplate>
+                           
 
-                            <asp:TextBox ID="txtSite" runat="server" Style="width:40px" Text='<%#
 
-                                         Eval("SiteID")%>'></asp:TextBox>
+                            <ItemStyle Width="100px" Wrap="True" />
 
-                        </EditItemTemplate>
+                           
 
-                        <FooterTemplate>
 
-                            <asp:TextBox ID="txtSite1" runat="server"></asp:TextBox>
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Cluster">
 
-                        </FooterTemplate>
+                            <ItemTemplate>
 
-<ItemStyle Width="40px"></ItemStyle>
-
-                    </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Cluster">
-
-                        <ItemTemplate>
-
-                            <asp:Label ID="lblCluster" runat="server" Text='<%#
+                                <asp:Label ID="lblCluster" runat="server" Text='<%#
 
                                          Eval("Cluster")%>'></asp:Label>
 
-                        </ItemTemplate>
+                            </ItemTemplate>
 
-                        <EditItemTemplate>
+                            
+                            <ItemStyle Width="100px" Wrap="True" />
 
-                            <asp:TextBox ID="txtCluster" runat="server" Text='<%#
+                            
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Region">
 
-                                         Eval("Cluster")%>'></asp:TextBox>
+                            <ItemTemplate>
 
-                        </EditItemTemplate>
+                                <asp:Label ID="lblregion" runat="server" Text='<%#
 
-                        <FooterTemplate>
+                                         Eval("region")%>'></asp:Label>
 
-                            <asp:TextBox ID="txtCluster1" runat="server"></asp:TextBox>
+                            </ItemTemplate>
 
-                        </FooterTemplate>
+                            
+                            <ItemStyle Width="100px" Wrap="True" />
 
-<ItemStyle Width="40px"></ItemStyle>
+                            
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Date Fueling">
 
-                    </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Date Fueling">
+                            <ItemTemplate>
 
-                        <ItemTemplate>
-
-                            <asp:Label ID="DateFueling" runat="server" Text='<%#
+                                <asp:Label ID="DateFueling" runat="server" Text='<%#
 
                                          Eval("DateFueling")%>'></asp:Label>
 
-                        </ItemTemplate>
+                            </ItemTemplate>
+  
+                            <ItemStyle Width="100px" Wrap="True" />
+  
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-Width="100px" HeaderText="Level Before">
 
-                        <EditItemTemplate>
+                            <ItemTemplate>
 
-                            <asp:TextBox ID="txtDateFueling" runat="server" Text='<%#
-
-                                         Eval("DateFueling")%>'></asp:TextBox>
-
-                        </EditItemTemplate>
-
-                        <FooterTemplate>
-
-                            <asp:TextBox ID="txtDateFueling1" runat="server"></asp:TextBox>
-
-                        </FooterTemplate>
-
-<ItemStyle Width="40px"></ItemStyle>
-
-                    </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="40px" HeaderText="Level Before">
-
-                        <ItemTemplate>
-
-                            <asp:Label ID="levelBefore" runat="server" Text='<%#
+                                <asp:Label ID="levelBefore" runat="server" Text='<%#
 
                                          Eval("levelBefore")%>'></asp:Label>
 
-                        </ItemTemplate>
+                            </ItemTemplate>
 
-                        <EditItemTemplate>
+                            <ItemStyle Width="100px" />
 
-                            <asp:TextBox ID="txtlevelBefore" runat="server" Text='<%#
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Level After">
 
-                                         Eval("levelBefore")%>'></asp:TextBox>
+                            <ItemTemplate>
 
-                        </EditItemTemplate>
-
-                        <FooterTemplate>
-
-                            <asp:TextBox ID="txtlevelBefore1" runat="server"></asp:TextBox>
-
-                        </FooterTemplate>
-
-<ItemStyle Width="40px"></ItemStyle>
-
-                    </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Level After">
-
-                        <ItemTemplate>
-
-                            <asp:Label ID="levelAfter" runat="server" Text='<%#
+                                <asp:Label ID="levelAfter" runat="server" Text='<%#
 
                                          Eval("levelAfter")%>'></asp:Label>
 
-                        </ItemTemplate>
+                            </ItemTemplate>
 
-                        <EditItemTemplate>
+                            <ItemStyle Width="100px" Wrap="True" />
 
-                            <asp:TextBox ID="txtlevelAfter" runat="server" Text='<%#
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Qty to be">
 
-                                         Eval("levelAfter")%>'></asp:TextBox>
+                            <ItemTemplate>
 
-                        </EditItemTemplate>
-
-                        <FooterTemplate>
-
-                            <asp:TextBox ID="txtlevelAfter1" runat="server"></asp:TextBox>
-
-                        </FooterTemplate>
-
-<ItemStyle Width="40px" Wrap="true"></ItemStyle>
-
-                    </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Qty to be">
-
-                        <ItemTemplate>
-
-                            <asp:Label ID="Qty" runat="server" Text='<%#
+                                <asp:Label ID="Qty" runat="server" Text='<%#
 
                                          Eval("Qty")%>'></asp:Label>
 
-                        </ItemTemplate>
+                            </ItemTemplate>
 
-                        <EditItemTemplate>
+                            <ItemStyle Width="100px" Wrap="True" />
 
-                            <asp:TextBox ID="txtQty" runat="server" Text='<%#
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Username">
 
-                                         Eval("Qty")%>'></asp:TextBox>
+                            <ItemTemplate>
 
-                        </EditItemTemplate>
-
-                        <FooterTemplate>
-
-                            <asp:TextBox ID="txtQty1" runat="server"></asp:TextBox>
-
-                        </FooterTemplate>
-
-<ItemStyle Width="40px" Wrap="true"></ItemStyle>
-
-                    </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Username">
-
-                        <ItemTemplate>
-
-                            <asp:Label ID="username" runat="server" Text='<%#
+                                <asp:Label ID="username" runat="server" Text='<%#
 
                                          Eval("username")%>'></asp:Label>
 
-                        </ItemTemplate>
+                            </ItemTemplate>
 
-                        <EditItemTemplate>
+                            <ItemStyle Width="100px" Wrap="True" />
 
-                            <asp:TextBox ID="txtusername" runat="server" Text='<%#
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Fin R Week">
 
-                                         Eval("username")%>'></asp:TextBox>
+                            <ItemTemplate>
 
-                        </EditItemTemplate>
-
-                        <FooterTemplate>
-
-                            <asp:TextBox ID="txtusername1" runat="server"></asp:TextBox>
-
-                        </FooterTemplate>
-
-<ItemStyle Width="40px" Wrap="true"></ItemStyle>
-
-                    </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true"  HeaderText="Fin R Week">
-
-                        <ItemTemplate>
-
-                            <asp:Label ID="FinRWeek" runat="server" Text='<%#
+                                <asp:Label ID="FinRWeek" runat="server" Text='<%#
 
                                          Eval("FinRWeek")%>'></asp:Label>
 
-                        </ItemTemplate>
+                            </ItemTemplate>
 
-                        <EditItemTemplate>
+                            <ItemStyle Width="100px" Wrap="True" />
 
-                            <asp:TextBox ID="txtFinRWeek" runat="server" Text='<%#
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Receipt Number">
 
-                                         Eval("FinRWeek")%>'></asp:TextBox>
+                            <ItemTemplate>
 
-                        </EditItemTemplate>
-
-                        <FooterTemplate>
-
-                            <asp:TextBox ID="txtFinRWeek1" runat="server"></asp:TextBox>
-
-                        </FooterTemplate>
-
-<ItemStyle Width="40px" Wrap="true"></ItemStyle>
-
-                    </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="40px" ItemStyle-Wrap="true" HeaderText="Receipt Number">
-
-                        <ItemTemplate>
-
-                            <asp:Label ID="ReceiptNumber" runat="server" Text='<%#
+                                <asp:Label ID="ReceiptNumber" runat="server" Text='<%#
 
                                          Eval("ReceiptNumber")%>'></asp:Label>
 
-                        </ItemTemplate>
+                            </ItemTemplate>
 
-                        <EditItemTemplate>
+                            <ItemStyle Width="100px" Wrap="True" />
 
-                            <asp:TextBox ID="txtReceiptNumber" runat="server" Text='<%#
-
-                                         Eval("ReceiptNumber")%>'></asp:TextBox>
-
-                        </EditItemTemplate>
-
-                        <FooterTemplate>
-
-                            <asp:TextBox ID="txtReceiptNumber1" runat="server"></asp:TextBox>
-
-                        </FooterTemplate>
-
-<ItemStyle Width="40px" Wrap="true"></ItemStyle>
-
-                    </asp:TemplateField>
+                        </asp:TemplateField>
 
 
 
 
-                    <asp:TemplateField>
+                        <asp:TemplateField>
 
-                        <ItemTemplate>
+                            <ItemTemplate>
 
-                            <asp:LinkButton ID="lnkRemove" runat="server" CommandArgument='<%#
+                                <asp:LinkButton ID="lnkRemove" runat="server" CommandArgument='<%#
 
-                                         Eval("FuelID")%>'
-                                OnClientClick="return confirm('Do you want to delete?')"
-                                Text="Delete"></asp:LinkButton>
+                                         Eval("SiteID")%>'
+                                    OnClientClick="return confirm('Do you want to delete?')" 
+                                    Text="Delete"></asp:LinkButton>
 
-                        </ItemTemplate>
+                            </ItemTemplate>
 
-                        <FooterTemplate>
+                            
 
-                            <asp:LinkButton ID="lnkAdd" runat="server"
-                                onclick="Btn_Add"
-                                Text="Add"></asp:LinkButton>
+                        </asp:TemplateField>
 
-                        </FooterTemplate>
+                        <asp:CommandField ShowEditButton="True" />
 
-                    </asp:TemplateField>
+                    </Columns>
 
-                    <asp:CommandField ShowEditButton="True" />
+                    
 
-                </Columns>
+                    <HeaderStyle BackColor="red" Font-Bold="True" ForeColor="#FFFFCC"></HeaderStyle>
 
-                <FooterStyle BackColor="White" ForeColor="#000066"></FooterStyle>
+                    <PagerStyle HorizontalAlign="Center" BackColor="#FFFFCC" ForeColor="Black"></PagerStyle>
 
-                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                    <RowStyle ForeColor="Black" BackColor="White" />
 
-                <PagerStyle HorizontalAlign="Left" BackColor="White" ForeColor="#000066"></PagerStyle>
+                    <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399"></SelectedRowStyle>
 
-                <RowStyle ForeColor="#000066" />
+                    <SortedAscendingCellStyle BackColor="#FEFCEB"></SortedAscendingCellStyle>
 
-                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White"></SelectedRowStyle>
+                    <SortedAscendingHeaderStyle BackColor="#AF0101"></SortedAscendingHeaderStyle>
 
-                <SortedAscendingCellStyle BackColor="#F1F1F1"></SortedAscendingCellStyle>
+                    <SortedDescendingCellStyle BackColor="#F6F0C0"></SortedDescendingCellStyle>
 
-                <SortedAscendingHeaderStyle BackColor="#007DBB"></SortedAscendingHeaderStyle>
-
-                <SortedDescendingCellStyle BackColor="#CAC9C9"></SortedDescendingCellStyle>
-
-                <SortedDescendingHeaderStyle BackColor="#00547E"></SortedDescendingHeaderStyle>
+                    <SortedDescendingHeaderStyle BackColor="#7E0000"></SortedDescendingHeaderStyle>
             </asp:GridView>
+                    
                      </asp:Panel>
                
             
@@ -351,4 +235,5 @@
                 
             </div>
             <!-- /.row -->
+   
 </asp:Content>

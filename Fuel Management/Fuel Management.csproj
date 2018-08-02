@@ -171,7 +171,6 @@
     <Content Include="js\skycons.js" />
     <Content Include="LoginPage.aspx" />
     <Content Include="ReportMonth.aspx" />
-    <Content Include="ReportWeek.aspx" />
     <Content Include="vendor\animate\animate.css" />
     <Content Include="vendor\animsition\css\animsition.css" />
     <Content Include="vendor\animsition\css\animsition.min.css" />
@@ -236,13 +235,6 @@
     </Compile>
     <Compile Include="ReportMonth.aspx.designer.cs">
       <DependentUpon>ReportMonth.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ReportWeek.aspx.cs">
-      <DependentUpon>ReportWeek.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ReportWeek.aspx.designer.cs">
-      <DependentUpon>ReportWeek.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

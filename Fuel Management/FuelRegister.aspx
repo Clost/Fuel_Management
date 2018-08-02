@@ -4,16 +4,16 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
    
-     <script type="text/javascript">
-        $(function () {
-            $("[id$=ADrefueled]").datepicker({
-                showOn: 'button',
-                buttonImageOnly: true,
-                buttonImage: '/Images/calender.png',
-                dateFormat: "dd/mm/yy"
+         <!--<script type="text/javascript">
+            $(function () {
+                $("[id$=ADrefueled]").datepicker({
+                    showOn: 'button',
+                    buttonImageOnly: true,
+                    buttonImage: '/Images/calender.png',
+                    dateFormat: "yy/dd/mm"
+                });
             });
-        });
-        </script>
+            </script>-->
     <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Fuel Register</h1>
@@ -49,13 +49,7 @@
                                                                 
                                                               
                                                           </div>
-                                                          <div class="input_container">
-                                                              <asp:Label id="clusterID" runat="server">Cluster: <span class="required">*</span></asp:Label>
-                                                              <div class="field_container">
-                                                                  <asp:TextBox id="cluster" runat="server"/>
-                                                                   <asp:RequiredFieldValidator ID="Requirefieldvalidator1" ControlToValidate="cluster" ErrorMessage="!" ForeColor="Red" runat="server" />
-                                                              </div>
-                                                          </div>
+                                                          
                                                       <div class="input_container">
                                                               <asp:Label ID="ADrefueledID" runat="server">Actual Date Refueled: <span class="required">*</span></asp:Label>
                                                               <div class="field_container">

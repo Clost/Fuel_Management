@@ -14,26 +14,24 @@ namespace Fuel_Management
         private DatabaseConnection con;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-
-                con = new DatabaseConnection();
-                con.OpenConnection();
-
-                con.ShowDataInGridView("select * from Fuel_register");
-                //gridManage.DataSource = con.dt;
-                //gridManage.DataBind();
-
-                Console.WriteLine(con.dt);
-            }
-
+            
 
         }
 
-        protected void Btn_Add(Object sender, EventArgs e)
+
+
+
+        
+
+
+
+        protected void Export_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/FuelRegister.aspx");
+            //ExportToExcel();
         }
 
+        /// Exports the datagridview values to Excel. 
+        /// </summary> 
     }
 }
+

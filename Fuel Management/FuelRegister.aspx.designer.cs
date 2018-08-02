@@ -40,33 +40,6 @@ namespace Fuel_Management {
         protected global::System.Web.UI.WebControls.DropDownList IdSite;
         
         /// <summary>
-        /// clusterID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label clusterID;
-        
-        /// <summary>
-        /// cluster control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cluster;
-        
-        /// <summary>
-        /// Requirefieldvalidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator Requirefieldvalidator1;
-        
-        /// <summary>
         /// ADrefueledID control.
         /// </summary>
         /// <remarks>

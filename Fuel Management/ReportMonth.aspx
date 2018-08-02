@@ -1,15 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ReportMonth.aspx.cs" Inherits="Fuel_Management.ReportWeek1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <div class="row">
+    <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Monthly Report</h1>
+                    <h1 class="page-header">Overview</h1>
                 </div>
-                <!-- /.col-lg-12 -->
+                <div id="search_bar">
+
+                    Search by:
+                    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" Width="120px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                    </asp:DropDownList>
+&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="true"  Width="120px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+                    </asp:DropDownList>
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Refresh" Width="95px" />
+
+                    
+
+                    <asp:Button ID="Button2" runat="server" Text="Export To Excel" />
+
+                    
+
+                </div>
            
             
-               
-							<div>
-                                
+                           
+        <div>
             <asp:Panel ID="panel" runat="server" Height="300px" Width="100%" ScrollBars="Auto">
 
             <asp:GridView ID="gridManage" runat="server" CssClass="EU_DataTable"
@@ -326,11 +341,12 @@
                 <SortedDescendingHeaderStyle BackColor="#00547E"></SortedDescendingHeaderStyle>
             </asp:GridView>
                      </asp:Panel>
+               
+            
 
-							</div>
-                             
-                            
-                          
+        </div>
+                              
+               
                 
             </div>
             <!-- /.row -->
