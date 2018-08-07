@@ -37,9 +37,30 @@
 
                 <asp:GridView ID="gridManage" runat="server" CssClass="EU_DataTable"
                     AutoGenerateColumns="False" ShowFooter="True" AllowPaging="true" OnPageIndexChanging="OnPageIndexChanging" CellPadding="4" BackColor="White" Width="96%"
-                    BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" Style="margin-bottom: 0px; margin-left:15px; overflow:visible" OnRowDeleting="gridManage_RowDeleting" OnRowEditing="gridManage_RowEditing">
+                    BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" Style="margin-bottom: 0px; margin-left:15px; overflow:visible" OnRowDataBound="gridManage_RowDataBound" OnRowEditing="gridManage_RowEditing" DataKeyNames="FuelID">
 
                     <Columns>
+
+                        <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Fuel ID">
+                            <HeaderStyle Width="100px" />
+
+                            <ItemTemplate>
+
+                                <asp:Label ID="lblFuel" runat="server" Style="width: 100px" Text='<%#
+
+                                         Eval("FuelID")%>'></asp:Label>
+
+                            </ItemTemplate>
+
+                           
+
+
+                            <ItemStyle Width="100px" Wrap="True" />
+
+                           
+
+
+                        </asp:TemplateField>
 
                         <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Site">
                             <HeaderStyle Width="100px" />
@@ -186,14 +207,14 @@
 
 
 
-                        <asp:TemplateField>
+                        <asp:TemplateField ItemStyle-Width="100px" ItemStyle-Wrap="true" HeaderText="Action">
 
                             <ItemTemplate>
 
                                 <asp:LinkButton ID="lnkRemove" runat="server" CommandArgument='<%#
 
                                          Eval("SiteID")%>'
-                                    OnClientClick="return confirm('Do you want to delete?')" 
+                                    OnClick="lnkRemove_Click"
                                     Text="Delete"></asp:LinkButton>
 
                             </ItemTemplate>
@@ -202,7 +223,7 @@
 
                         </asp:TemplateField>
 
-                        <asp:CommandField ShowEditButton="True" />
+                       
 
                     </Columns>
 

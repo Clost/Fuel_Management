@@ -11,6 +11,7 @@ namespace Fuel_Management
         SqlConnection connect;
         public SqlCommand cmd;
         SqlDataAdapter dr;
+        public SqlDataReader rd;
         public DataTable dt;
         public int x;
 
@@ -35,8 +36,8 @@ namespace Fuel_Management
         public SqlDataReader DataReader(string Query)
         {
             cmd = new SqlCommand(Query, connect);
-            SqlDataReader dr = cmd.ExecuteReader();
-            return dr;
+            rd = cmd.ExecuteReader();
+            return rd;
 
         }
 

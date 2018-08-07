@@ -12,6 +12,7 @@ namespace Fuel_Management
     public partial class FuelRegisterPage : System.Web.UI.Page
     {
         private DatabaseConnection con;
+        bool flag = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +26,7 @@ namespace Fuel_Management
                 IdSite.Items.Add(dr[0].ToString());
             }
 
-
+             
 
             IdSite.Items.Insert(0, new ListItem("Select Site ID", "0"));
 
@@ -35,7 +36,7 @@ namespace Fuel_Management
                 username.Enabled = false;
                 
             }
-
+            con.CloseConnection();
             ADrefueled.ReadOnly = true;
             ADrefueled.Text = System.DateTime.Now.ToString("yyyy-MM-dd");
 
@@ -57,14 +58,31 @@ namespace Fuel_Management
             }
             else
             {
-                con.ExecuteQueries("select count(FuelID) from Fuel_register where SiteID=" + IdSite.Text + " And DateFueling=" + ADrefueled.Text);
-                if(con.cmd.Execute)
+               
+                con.DataReader("select * from Fuel_register where DateFueling='" +ADrefueled.Text+"'");
+                
+                while (con.rd.Read())
                 {
-
+                    
+                    if (con.rd[7].ToString()==IdSite.SelectedValue)
+                    {
+                       
+                            flag = true;
+                            break;
+                        
+                       
+                    }
                 }
-                else
+                con.rd.Close();
+                if(flag== true)
+                {
+                    Response.Write("<script>alert('Existing reflueling for today')</script>");
+                }
+                
+                else if(flag==false)
                 {
                     SaveFuel();
+                    
                 }
                
             }
@@ -83,7 +101,14 @@ namespace Fuel_Management
             if (con.x > 0)
             {
                 Response.Write("<script>alert('Refueling has been done')</script>");
+
                 
+                Levelbefore.Text = "";
+                Levelafter.Text = "";
+                Qty.Text = "";
+                username.Text = "";
+                FinRWeek.Text = "";
+                receiptNumber.Text = "";
             }
             else
             {

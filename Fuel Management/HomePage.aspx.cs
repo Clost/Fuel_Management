@@ -95,6 +95,7 @@ namespace Fuel_Management
             con.OpenConnection();
 
             con.ExecuteQueries("select * from Fuel_register");
+            con.CloseConnection();
         }
 
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,7 +129,7 @@ namespace Fuel_Management
                 Console.WriteLine(con.dt);
             }
 
-            
+            con.CloseConnection();
         }
 
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -142,59 +143,36 @@ namespace Fuel_Management
             con = new DatabaseConnection();
             con.OpenConnection();
 
-            con.ShowDataInGridView("select e.SiteID, Cluster, Region,DateFueling, levelBefore,levelAfter,Qty,username,FinRWeek,ReceiptNumber from Fuel_register e, Site t, tabl_cluster1 c where e.SiteID = t.SiteID and t.SiteID=c.SiteID");
+            con.ShowDataInGridView("select FuelID, e.SiteID, Cluster, Region,DateFueling, levelBefore,levelAfter,Qty,username,FinRWeek,ReceiptNumber from Fuel_register e, Site t, tabl_cluster1 c where e.SiteID = t.SiteID and t.SiteID=c.SiteID");
             gridManage.DataSource = con.dt;
             gridManage.DataBind();
 
             Console.WriteLine(con.dt);
+
+            con.CloseConnection();
         }
 
         protected void Export_Click(object sender, EventArgs e)
         {
-            Response.Clear();
-            Response.Buffer = true;
+            Response.ClearContent();
             Response.AddHeader("content-disposition", "attachment;filename=GridViewExport.xls");
-            Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
-            using (StringWriter sw = new StringWriter())
-            {
-                HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+            StringWriter sw = new StringWriter();
+            
+            HtmlTextWriter hw = new HtmlTextWriter(sw);
 
                 //To Export all pages
                 gridManage.AllowPaging = false;
                 this.DataBind();
 
-                gridManage.HeaderRow.BackColor = Color.White;
-                foreach (TableCell cell in gridManage.HeaderRow.Cells)
-                {
-                    cell.BackColor = gridManage.HeaderStyle.BackColor;
-                }
-                foreach (GridViewRow row in gridManage.Rows)
-                {
-                    row.BackColor = Color.White;
-                    foreach (TableCell cell in row.Cells)
-                    {
-                        if (row.RowIndex % 2 == 0)
-                        {
-                            cell.BackColor = gridManage.AlternatingRowStyle.BackColor;
-                        }
-                        else
-                        {
-                            cell.BackColor = gridManage.RowStyle.BackColor;
-                        }
-                        cell.CssClass = "textmode";
-                    }
-                }
-
-                gridManage.RenderControl(hw);
-
-                //style to format numbers to string
-                string style = @"<style> .textmode { } </style>";
-                Response.Write(style);
-                Response.Output.Write(sw.ToString());
-                Response.Flush();
+          
+            gridManage.RenderControl(hw);
+            
+                Response.Write(sw.ToString());
+                
                 Response.End();
-            }
+            
         }
 
         public override void VerifyRenderingInServerForm(Control control)
@@ -203,29 +181,45 @@ namespace Fuel_Management
         }
 
        
-        protected void gridManage_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            string FuelID = e.Keys["FuelID"].ToString();
-
-            con.ExecuteQueries("Delete from Fuel_register where FuelID =" + FuelID);
-            con.OpenConnection();
-
-            if (con.cmd.ExecuteNonQuery() > 0)
-            {
-                Response.Write("Record Deleted Sucessfully!!!");
-                this.BindGrid();
-            }
-            else
-            {
-                Response.Write("Record Deleting Failed!!!");
-
-            }
-            con.CloseConnection();
-        }
+        
 
         protected void gridManage_RowEditing(object sender, GridViewEditEventArgs e)
         {
 
+        }
+
+        protected void lnkRemove_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                con = new DatabaseConnection();
+                LinkButton lnk = sender as LinkButton;
+                GridViewRow gridViewRow = lnk.NamingContainer as GridViewRow;
+                int FuelID = Convert.ToInt32(gridManage.DataKeys[gridViewRow.RowIndex].Value.ToString());
+                con.OpenConnection();
+                con.ExecuteQueries("delete from [Fuel_register] where FuelID=" + FuelID);
+                int a = con.cmd.ExecuteNonQuery();
+                con.CloseConnection();
+                BindGrid();
+                if (a > 0)
+                {
+                    Response.Write("<script>alert('Record Deleted Sucessfully!!!')</script>");
+                }
+            }catch(Exception)
+            {
+                Response.Write("<script>alert('empty')</script>");
+            }
+        }
+
+        protected void gridManage_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if(e.Row.RowType==DataControlRowType.DataRow)
+            {
+                string SiteID = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "SiteID"));
+                LinkButton lnkbutton = (LinkButton)e.Row.FindControl("lnkRemove");
+                lnkbutton.Attributes.Add("onclick", "JavaScript:return ConfirmationBox('" + SiteID + "')");
+                
+            }
         }
     }
 
